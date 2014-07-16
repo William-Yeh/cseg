@@ -1,0 +1,67 @@
+apply plugin: 'java'
+apply plugin: 'application' 
+
+
+buildscript {
+    //
+    // import gradle-download-task:
+    // https://github.com/michel-kraemer/gradle-download-task
+    //
+    repositories { mavenCentral() }
+    dependencies { classpath 'de.undercouch:gradle-download-task:1.0' }
+}
+
+
+repositories {
+    maven {
+        url 'http://maven.ansj.org/'
+    }
+}
+
+
+dependencies {
+    compile group: 'org.ansj', name: 'ansj_seg', version: '2.0.6'
+    compile group: 'org.nlpcn', name: 'nlp-lang', version: '0.2'
+}
+
+
+def downloaded_resources_dir = "$buildDir/downloaded-resources"
+
+
+jar {
+    baseName = project.name + '-all'
+
+    from "$downloaded_resources_dir/library.properties"
+/*
+    from("$downloaded_resources_dir/library") {    
+        into 'library'
+    }
+*/
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+
+task download << {
+
+    apply plugin: 'download-task'
+
+    download {
+        def dir = new File(downloaded_resources_dir)
+        dir.mkdirs()
+
+	    src 'https://raw.githubusercontent.com/ansjsun/ansj_seg/master/library.properties'
+	    dest dir
+    }
+
+    download {
+	    def library_dir = new File("$downloaded_resources_dir/library")
+	    library_dir.mkdirs()
+
+	    src 'https://raw.githubusercontent.com/ansjsun/ansj_seg/master/library/default.dic'
+	    dest library_dir
+
+	    src 'https://raw.githubusercontent.com/ansjsun/ansj_seg/master/library/ambiguity.dic'
+	    dest library_dir
+	}
+}
+

@@ -1,0 +1,19 @@
+# dynamic generated or temp directories
+
+
+# Java specific
+build/*
+.gradle/*
+.gradle*
+
+
+# test or legacy files
+
+
+
+# generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
