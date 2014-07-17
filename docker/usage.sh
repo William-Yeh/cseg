@@ -31,7 +31,7 @@ Usage
     # use current directory "\$(pwd)" for file input/output.
     $ docker run --rm          \\
         -v \$(pwd):/data/file   \\
-        williamyeh/cseg  input.txt  output.txt
+        williamyeh/cseg  cseg  input.txt  output.txt
 
 
     # segmentation, using customized dictionaries;
@@ -39,7 +39,7 @@ Usage
     $ docker run --rm          \\
         -v /MY_DICTIONARY_DIR:/data/dict   \\
         -v \$(pwd):/data/file               \\
-        williamyeh/cseg  input.txt  output.txt
+        williamyeh/cseg  cseg  input.txt  output.txt
 
 
 
