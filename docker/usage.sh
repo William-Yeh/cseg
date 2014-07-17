@@ -29,14 +29,14 @@ Usage
 
     # simple segmentation;
     # use current directory "\$(pwd)" for file input/output.
-    $ docker run -it --rm      \\
+    $ docker run --rm          \\
         -v \$(pwd):/data/file   \\
         williamyeh/cseg  input.txt  output.txt
 
 
     # segmentation, using customized dictionaries;
     # assume that dictionaries are located in "/MY_DICTIONARY_DIR" of host OS.
-    $ docker run -it --rm      \\
+    $ docker run --rm          \\
         -v /MY_DICTIONARY_DIR:/data/dict   \\
         -v \$(pwd):/data/file               \\
         williamyeh/cseg  input.txt  output.txt
