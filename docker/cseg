@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# cseg: simple tool for Chinese segmentation.
+#
+# "/data/file" & "/data/dict" directories are exposed by Dockerfile:
+#
+#   - VOLUME [ "/data/file", "/data/dict" ]
+#   - WORKDIR /data/file
+#
+
+
+if [ $# -lt 2 ]; then
+    echo "cseg: simple tool for Chinese segmentation."
+    echo "Usage: cseg  input_file  output_file"
+    exit 1
+fi
+
+java CSeg  $1  $2

@@ -1,8 +1,10 @@
 Chinese segmentation tool for plaintext UTF-8 corpus
 ====================================================
 
-A simple tool for Chinese segmentation.
+Simple tools for Chinese segmentation.
 
+
+**Docker users: go to the [docker](docker) directory for more information.**
 
 
 ## Build
@@ -67,7 +69,7 @@ You could create a wrapper script or batch file to simplify the command line.
 
 ## TODO
 
-- Docker version.
+- <del>Docker version.</del>
 
 - Convenient script wrapper.
 
@@ -77,9 +79,9 @@ You could create a wrapper script or batch file to simplify the command line.
 
 ## Credit
 
-Thanks the great [ansj_seg](https://github.com/ansjsun/ansj_seg) project.
+Thanks for the great [ansj_seg](https://github.com/ansjsun/ansj_seg) project.
 
 
 ## License
 
-Apache License 2.0, same as the [ansj_seg](https://github.com/ansjsun/ansj_seg) project.
+[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0), same as the [ansj_seg](https://github.com/ansjsun/ansj_seg) project.
