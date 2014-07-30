@@ -6,9 +6,7 @@ williamyeh/cseg
 
 Repository name in Docker Hub: **[williamyeh/cseg](https://registry.hub.docker.com/u/williamyeh/cseg/)**
 
-This repository contains **Dockerfile** of [cseg](https://github.com/William-Yeh/cseg) for [Docker](http://www.docker.com/)'s [automated build](https://registry.hub.docker.com/u/williamyeh/cseg/) published to the public [Docker Hub](https://hub.docker.com/).
-
-
+This repository contains Dockerized [cseg](https://github.com/William-Yeh/cseg) application, published to the public [Docker Hub](https://registry.hub.docker.com/) via **automated build** mechanism.
 
 
 
@@ -28,7 +26,7 @@ This docker image contains the following software stack:
 
 ### Dependencies
 
-- [williamyeh/docker-java8](https://github.com/William-Yeh/docker-java8)
+- [williamyeh/java8](https://github.com/William-Yeh/docker-java8)
 
 
 ### History

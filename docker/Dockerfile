@@ -8,54 +8,42 @@
 #
 
 # pull base image
-FROM williamyeh/docker-java8
+FROM williamyeh/java8
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
 ENV GRADLE_TARBALL https://services.gradle.org/distributions/gradle-2.0-bin.zip
 ENV GRADLE_BIN     /tmp/gradle-2.0/bin/gradle
 
 
-RUN apt-get update
-
-# Install curl & helper tools
-RUN apt-get install -y curl git unzip
-
-# Install Gradle tool
-RUN \
+RUN DEBIAN_FRONTEND=noninteractive  apt-get update  && \
+    apt-get install -y curl git unzip  && \
+    \
     cd /tmp  && \
     curl -OL $GRADLE_TARBALL  && \
-    unzip *.zip
-
-
-# compile
-RUN \
+    unzip *.zip  && \
+    \
+    \
+    \
     cd /tmp  && \
     git clone https://github.com/William-Yeh/cseg.git  && \
     cd cseg  && \
     $GRADLE_BIN download  && \
-    $GRADLE_BIN build
-
-
-# move binary to public accessible directory
-RUN \
+    $GRADLE_BIN build  && \
+    \
+    \
+    \
     mkdir -p /opt/cseg /data/dict  && \
     cd /tmp/cseg/build  && \
     cp libs/cseg-all.jar                        /opt/cseg   && \
     cp downloaded-resources/library.properties  /opt/cseg   && \
     cp downloaded-resources/library/*           /data/dict  && \
     sed -i -e 's/=library/=\/data\/dict/'       /opt/cseg/library.properties
-
-
-# Uninstall curl & helper tools
-RUN apt-get remove -y --auto-remove curl git unzip && \
-    apt-get clean
-
-# clean up
-RUN rm -rf /tmp/*  /root/.gradle
-
-ENV GRADLE_TARBALL ''
-ENV GRADLE_BIN ''
+    \
+    \
+    \
+    apt-get remove -y --auto-remove curl git unzip && \
+    apt-get clean  && \
+    rm -rf /tmp/*  /root/.gradle
 
 
 #----------------------------#
